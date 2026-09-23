@@ -1,75 +1,58 @@
-# Retail Customer & Sales Analytics: Superstore
+# superstore-retail-analytics
 
-Analysis of a US retail dataset (Sample Superstore, 2014–2017) covering
-customer segmentation, retention, seasonality, and product profitability —
-with business recommendations tied to each finding.
+An end-to-end data science and business intelligence project analyzing a US retail dataset (Sample Superstore, 2014–2017). This repository features customer segmentation, cohort retention mapping, seasonal sales analysis, and product profitability modeling with data-driven business recommendations.
 
-## Headline findings (real, from this dataset)
+## Overview
 
-- **Deep discounts destroy margin.** Profit margin is ~30% at 0% discount
-  and falls steadily as discount increases — turning **negative at 21%+
-  discounts, and -48% at 30%+**. A large share of Furniture and Technology
-  sales fall into these deep-discount tiers.
-- **Two sub-categories are unprofitable overall**: Tables (-$17.7K profit on
-  $207K revenue) and Bookcases (-$3.5K profit on $115K revenue), despite
-  both ranking in the top half of sub-categories by revenue — a case of
-  revenue leadership masking margin problems.
-- **8 of 17 sub-categories drive ~80% of total revenue** (Phones, Chairs,
-  Storage, Tables, Binders, Machines, Accessories, Copiers) — classic
-  Pareto concentration, useful for prioritizing merchandising/inventory
-  focus.
-- Full RFM customer segmentation (Champions / Loyal / Potential Loyalists /
-  At Risk / Lost), cohort retention curves, and seasonal revenue patterns
-  are in the notebook — see it for the exact splits and dollar figures.
+This project uses Python to uncover hidden performance patterns, analyze customer lifecycles, and evaluate pricing strategy impacts to guide merchandising and operational improvements.
 
-## What's in here
+## Business Questions Answered
 
-```
-├── data/
-│   └── superstore_raw.csv        # source data (9,994 line items, 2014-2017)
+* **Discount Impacts:** How do promotional markdown strategies across different category tiers impact actual net profit margins?
+* **Product Profitability:** Which major revenue-driving product sub-categories are masking hidden losses and destroying company margins?
+* **Customer Segmentation:** How can we categorize our user base into actionable groups (Champions, At-Risk, Loyal) based on purchasing behavior?
+* **Retention Trends:** What do monthly acquisition cohorts look like when tracked over a 12-month lifecycle?
+* **Seasonality Patterns:** How do sales volumes shift across fiscal months, years, and specific days of the week?
+
+## Core Findings
+
+* **Discount Thresholds:** Profit margins remain strong at ~30% with no discount, but collapse into negative returns at markdowns exceeding 21%.
+* **Margin Drainers:** High-volume sub-categories like Tables and Bookcases generate significant revenue top-line numbers but remain net unprofitable.
+* **Pareto Concentration:** Roughly 80% of total business revenue is driven by just 8 of the 17 product sub-categories.
+
+## Tools & Skills Demonstrated
+
+* **Data Wrangling:** `pandas` and `numpy` for deep cleaning, data reshaping, and metric aggregates.
+* **Customer Modeling:** RFM (Recency, Frequency, Monetary) scoring cross-validated using Unsupervised Machine Learning (`scikit-learn` K-Means clustering).
+* **Advanced Analytics:** Time-series seasonality tracking, monthly cohort retention matrices, and Pareto (80/20 rule) metrics.
+* **Data Visualization:** `matplotlib` and `seaborn` plotting scripts.
+
+## Project Structure
+
+```text
+├── charts/            
+├── data/              
 ├── notebook/
-│   └── ecommerce_analysis.ipynb  # full analysis, pre-run with all charts
-├── charts/                       # exported PNGs of every chart
-└── README.md
+│   └── ecommerce_analysis.ipynb  
+└── README.md          
 ```
 
-## Dataset
+## How to Run It
 
-[Sample Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final)
-— a widely-used real-world US retail dataset: 9,994 order line items,
-5,009 orders, 793 customers, January 2014 – December 2017. Each row is a
-product line item with Order/Ship dates, Customer, Region/Segment,
-Category/Sub-Category, Sales, Quantity, Discount, and Profit.
+To run this notebook environment locally on your machine, you will need [Python 3](https://python.org) installed:
 
-## How to run
+1. Click the green **Code** button at the top of this GitHub page and select **Download ZIP**.
+2. Extract the downloaded ZIP file onto your computer.
+3. Open your terminal or command prompt, navigate inside the extracted folder, and install the required data stack:
+   ```bash
+   pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+   ```
+4. Fire up the notebook environment server:
+   ```bash
+   jupyter notebook
+   ```
+5. Navigate into the `notebook/` folder through the browser interface and open `ecommerce_analysis.ipynb`. 
 
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter
-jupyter notebook notebook/ecommerce_analysis.ipynb
-```
-Or open `notebook/ecommerce_analysis.ipynb` directly on GitHub — it renders
-with all charts and tables already visible, no setup needed.
+*(Alternatively, you can click on the file directly here inside GitHub to view the pre-rendered analysis text, data tables, and charts instantly without setting up any code libraries locally).*
 
-## Analysis covered
 
-1. **Data loading, reshaping & quality checks** — the raw line-item file is
-   reshaped into tidy `customers` / `orders` / `items` tables
-2. **RFM analysis** — Recency/Frequency/Monetary scoring → 5 customer
-   segments, cross-validated with K-Means clustering
-3. **Cohort retention analysis** — monthly acquisition cohorts tracked over
-   12+ months, visualized as a retention heatmap
-4. **Seasonal trends** — monthly revenue trend, year-over-year comparison,
-   day-of-week patterns
-5. **Product performance** — Pareto (80/20) analysis by sub-category, and
-   a discount-level vs. profit-margin analysis
-6. **Business recommendations** — five concrete recommendations grounded
-   in the analysis: VIP treatment for top-segment customers, a win-back
-   campaign for at-risk customers, fixing the month-1 retention drop,
-   category investment priorities, and a discount policy cap
-
-## Skills demonstrated
-
-pandas data wrangling & reshaping · RFM segmentation · unsupervised
-clustering (K-Means) · cohort/retention analysis · time-series &
-seasonality analysis · Pareto analysis · data visualization
-(matplotlib/seaborn) · translating analysis into business recommendations
